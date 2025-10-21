@@ -279,7 +279,14 @@
                             <li><strong>Bundles:</strong> "Create a knowledge base about authentication"</li>
                             <li><strong>Analysis:</strong> "What topics do I discuss most?"</li>
                         </ul>
-                        <p><em>Note: AI Assistant requires API authentication. Configure your API key in settings.</em></p>
+                        <p><strong>Setup Required:</strong></p>
+                        <ol style="margin-top: 8px; padding-left: 20px;">
+                            <li>Install <strong>Claude Code CLI</strong> from <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">github.com/anthropics/claude-code</a></li>
+                            <li>Authenticate: <code class="inline-code">claude login</code></li>
+                            <li>Restart this web server</li>
+                            <li>Check status badge shows "Authenticated"</li>
+                        </ol>
+                        <p style="margin-top: 12px;"><em>The AI Assistant uses Claude Sonnet 4.5 via Claude Code headless mode. See <a href="#" onclick="alert('Check SETUP.md for detailed Claude Code installation instructions'); return false;">SETUP.md</a> for detailed setup instructions.</em></p>
                     </div>
 
                     <div class="help-section">

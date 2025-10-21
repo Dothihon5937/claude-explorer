@@ -65,6 +65,9 @@ Claude Explorer helps you unlock the value in your Claude.ai conversation histor
 ### Prerequisites
 - Node.js 18 or higher
 - Your Claude.ai export data (see [Getting Your Data](#getting-your-data))
+- **Claude Code CLI** (optional, for AI Assistant features)
+
+> **📖 New to Claude Explorer?** See [SETUP.md](SETUP.md) for detailed setup instructions including Claude Code installation.
 
 ### Installation
 
@@ -159,13 +162,16 @@ npm run web
 ```
 
 Features:
+- 📤 **Upload your Claude.ai export** - Drag and drop ZIP file upload
 - Browse all conversations with infinite scroll
 - Full-text search with live results
-- Sort and filter options
+- Advanced filters (date range, message count)
+- 📊 **Analytics dashboard** with activity timeline and keyword analysis
 - Detailed conversation viewer with syntax highlighting
-- One-click export buttons
+- One-click export buttons (Markdown, JSON, ZIP)
+- Batch export for multiple conversations
 - Project explorer
-- AI assistant panel
+- 🤖 **AI assistant** - Natural language queries (requires Claude Code CLI)
 
 ### CLI Interface
 
