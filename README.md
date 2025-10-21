@@ -72,7 +72,7 @@ Claude Explorer helps you unlock the value in your Claude.ai conversation histor
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/claude-explorer.git
+git clone https://github.com/paulhshort/claude-explorer.git
 cd claude-explorer
 npm install
 npm run build
@@ -434,7 +434,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- Report issues on [GitHub Issues](https://github.com/yourusername/claude-explorer/issues)
+- Report issues on [GitHub Issues](https://github.com/paulhshort/claude-explorer/issues)
 - Star the repo if you find it useful!
 
 ## Roadmap
@@ -448,4 +448,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Paul Short](https://github.com/yourusername)
+Made with ❤️ by [Paul Short](https://github.com/paulhshort)
