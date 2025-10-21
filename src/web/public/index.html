@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>🔍 Claude Explorer</h1>
+                    <p class="subtitle">Search, explore, and export your Claude.ai conversations</p>
+                </div>
+                <button id="help-btn" class="btn-icon" aria-label="Open Help" title="Help">
+                    <span class="help-icon">?</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="upload-section" id="upload-section">
+            <div class="upload-card">
+                <div class="upload-icon">📤</div>
+                <h3>Upload Claude.ai Export</h3>
+                <p>Upload a .zip file containing your Claude.ai export data</p>
+                <div class="upload-controls">
+                    <input type="file" id="file-input" accept=".zip" style="display: none;">
+                    <button id="upload-btn" class="btn btn-primary">Choose File</button>
+                    <button id="clear-upload-btn" class="btn btn-sm" style="display: none;">Clear Uploaded Data</button>
+                </div>
+                <div id="upload-status" class="upload-status"></div>
+                <div id="upload-progress" class="upload-progress hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">Uploading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar" id="stats">
+            <div class="stat">
+                <span class="stat-label">Conversations</span>
+                <span class="stat-value" id="stat-conversations">-</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Messages</span>
+                <span class="stat-value" id="stat-messages">-</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Projects</span>
+                <span class="stat-value" id="stat-projects">-</span>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-bar">
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search conversations..."
+                    autocomplete="off"
+                >
+                <button id="search-btn" class="btn btn-primary">Search</button>
+            </div>
+
+            <div class="filters">
+                <label data-tooltip="Hide conversations with no messages">
+                    <input type="checkbox" id="filter-messages-only" checked>
+                    Only with messages
+                </label>
+                <select id="sort-select" data-tooltip="Change sorting order">
+                    <option value="date">Sort by Date</option>
+                    <option value="messages">Sort by Messages</option>
+                    <option value="name">Sort by Name</option>
+                </select>
+                <button id="toggle-advanced-filters" class="btn btn-sm" data-tooltip="Filter by date range and message count">⚙️ Advanced Filters</button>
+            </div>
+
+            <div id="advanced-filters" class="advanced-filters hidden">
+                <div class="filter-group">
+                    <label>Date Range:</label>
+                    <div class="date-range">
+                        <input type="date" id="filter-date-from" placeholder="From">
+                        <span>to</span>
+                        <input type="date" id="filter-date-to" placeholder="To">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Message Count:</label>
+                    <div class="range-inputs">
+                        <input type="number" id="filter-messages-min" placeholder="Min" min="0" style="width: 80px;">
+                        <span>to</span>
+                        <input type="number" id="filter-messages-max" placeholder="Max" min="0" style="width: 80px;">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button id="apply-filters" class="btn btn-primary btn-sm">Apply Filters</button>
+                    <button id="clear-filters" class="btn btn-sm">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="conversations" data-tooltip="Browse all conversations">Conversations</button>
+            <button class="tab" data-tab="projects" data-tooltip="View Claude.ai projects">Projects</button>
+            <button class="tab" data-tab="analytics" data-tooltip="View conversation insights and trends">📊 Analytics</button>
+            <button class="tab" data-tab="assistant" data-tooltip="Ask AI questions about your conversations">🤖 AI Assistant</button>
+        </div>
+
+        <div class="tab-content" id="conversations-tab">
+            <div class="results-header">
+                <span id="results-count">Loading...</span>
+                <div class="batch-actions">
+                    <button id="select-all-btn" class="btn btn-sm" data-tooltip="Select or deselect all visible conversations">Select All</button>
+                    <button id="export-selected-btn" class="btn btn-sm btn-primary" disabled data-tooltip="Export selected conversations as ZIP">
+                        Export Selected (<span id="selected-count">0</span>)
+                    </button>
+                </div>
+            </div>
+            <div id="results" class="results"></div>
+        </div>
+
+        <div class="tab-content hidden" id="projects-tab">
+            <div id="projects-list" class="results"></div>
+        </div>
+
+        <div class="tab-content hidden" id="analytics-tab">
+            <div class="analytics-dashboard">
+                <h2>📊 Conversation Analytics</h2>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>📅 Activity Over Time</h3>
+                        <div id="activity-timeline" class="chart-container"></div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>💬 Message Distribution</h3>
+                        <div id="message-distribution" class="stats-list"></div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>🏷️ Top Keywords</h3>
+                        <div id="top-keywords" class="keywords-cloud"></div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>📈 Conversation Trends</h3>
+                        <div id="conversation-trends" class="stats-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content hidden" id="assistant-tab">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <h3>🤖 AI Librarian Assistant</h3>
+                    <p class="terminal-subtitle">Ask questions about your conversations, search for specific topics, or create knowledge bases.</p>
+                    <div class="model-info">
+                        <span class="model-badge">Sonnet 4.5</span>
+                        <span class="status-badge" id="auth-status">Checking...</span>
+                    </div>
+                </div>
+                <div class="terminal-output" id="terminal-output">
+                    <div class="terminal-message system-message">
+                        <div class="message-icon">ℹ️</div>
+                        <div class="message-content">
+                            <strong>Welcome to Claude Explorer AI Assistant!</strong><br><br>
+                            I can help you with:<br>
+                            • <strong>Search conversations:</strong> "Find conversations about React from 2024"<br>
+                            • <strong>Get details:</strong> "Show me the details of conversation X"<br>
+                            • <strong>Export content:</strong> "Export conversations about TypeScript as markdown"<br>
+                            • <strong>Create bundles:</strong> "Create a knowledge base about authentication"<br>
+                            • <strong>Analyze patterns:</strong> "What topics do I discuss most?"<br><br>
+                            Type your question below to get started!
+                        </div>
+                    </div>
+                </div>
+                <div class="terminal-input-container">
+                    <textarea id="terminal-input" placeholder="Ask me anything about your Claude conversations..." rows="3"></textarea>
+                    <div class="terminal-actions">
+                        <button id="clear-chat-btn" class="btn btn-sm">Clear Chat</button>
+                        <button id="send-btn" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="detail-modal" class="modal hidden">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div id="detail-content"></div>
+            </div>
+        </div>
+
+        <div id="help-modal" class="modal hidden" role="dialog" aria-labelledby="help-title" aria-modal="true">
+            <div class="modal-content help-modal-content">
+                <button class="modal-close" aria-label="Close Help">&times;</button>
+                <div class="help-content">
+                    <h2 id="help-title">Help & Documentation</h2>
+
+                    <div class="help-section">
+                        <h3>📤 Getting Started - Uploading Your Data</h3>
+                        <p>To use Claude Explorer, you need to export your conversations from Claude.ai:</p>
+                        <ol>
+                            <li>Go to <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></li>
+                            <li>Click your profile icon in the bottom-left corner</li>
+                            <li>Select "Settings" from the menu</li>
+                            <li>Navigate to the "Data" or "Privacy" section</li>
+                            <li>Click "Export Data" and download the ZIP file</li>
+                            <li>Use the Claude Explorer CLI to import: <code class="inline-code">claude-explorer import /path/to/export.zip</code></li>
+                        </ol>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>🔍 Search Features</h3>
+                        <p><strong>Basic Search:</strong> Type keywords in the search box and press Enter or click Search.</p>
+                        <p><strong>Search Tips:</strong></p>
+                        <ul>
+                            <li>Search looks through conversation names and message content</li>
+                            <li>Results show matching snippets from messages</li>
+                            <li>Use specific keywords for better results</li>
+                            <li>Clear search by searching with empty text</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>⚙️ Advanced Filters</h3>
+                        <p>Click "Advanced Filters" to access powerful filtering options:</p>
+                        <ul>
+                            <li><strong>Date Range:</strong> Filter conversations by creation date</li>
+                            <li><strong>Message Count:</strong> Set minimum and maximum message thresholds</li>
+                            <li><strong>Sort Options:</strong> Sort by date, message count, or name</li>
+                            <li><strong>Only with messages:</strong> Hide empty conversations</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>📊 Analytics Dashboard</h3>
+                        <p>The Analytics tab provides insights into your conversation patterns:</p>
+                        <ul>
+                            <li><strong>Activity Over Time:</strong> See when you're most active</li>
+                            <li><strong>Message Distribution:</strong> View short, medium, and long conversations</li>
+                            <li><strong>Top Keywords:</strong> Discover your most discussed topics (click to search)</li>
+                            <li><strong>Conversation Trends:</strong> Track weekly and monthly activity</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>📥 Export Options</h3>
+                        <p>Export conversations in multiple formats:</p>
+                        <ul>
+                            <li><strong>📄 Markdown (MD):</strong> Human-readable format, great for documentation</li>
+                            <li><strong>📋 JSON:</strong> Raw data format for processing or backup</li>
+                            <li><strong>📦 ZIP Bundle:</strong> Complete package with all artifacts and metadata</li>
+                            <li><strong>Batch Export:</strong> Select multiple conversations and export together</li>
+                        </ul>
+                        <p><strong>How to export:</strong></p>
+                        <ul>
+                            <li>Single: Click format button (MD/JSON/ZIP) on any conversation card</li>
+                            <li>Multiple: Check conversations, then click "Export Selected"</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>🤖 AI Assistant</h3>
+                        <p>The AI Librarian helps you analyze and organize your conversations:</p>
+                        <ul>
+                            <li><strong>Search:</strong> "Find conversations about React from 2024"</li>
+                            <li><strong>Details:</strong> "Show me conversation details for [UUID]"</li>
+                            <li><strong>Export:</strong> "Export conversations about TypeScript as markdown"</li>
+                            <li><strong>Bundles:</strong> "Create a knowledge base about authentication"</li>
+                            <li><strong>Analysis:</strong> "What topics do I discuss most?"</li>
+                        </ul>
+                        <p><em>Note: AI Assistant requires API authentication. Configure your API key in settings.</em></p>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>⌨️ Keyboard Shortcuts</h3>
+                        <ul>
+                            <li><strong>Enter</strong> in search box - Execute search</li>
+                            <li><strong>Esc</strong> - Close modal or help window</li>
+                            <li><strong>Shift + Enter</strong> in AI Assistant - New line (Enter to send)</li>
+                            <li><strong>?</strong> - Open this help window (when focused on page)</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>❓ Frequently Asked Questions</h3>
+                        <details>
+                            <summary>How often should I export my data?</summary>
+                            <p>Export your data whenever you want to backup or analyze your conversations. There's no automatic sync, so export periodically if you want to keep your local copy up-to-date.</p>
+                        </details>
+                        <details>
+                            <summary>Can I search for specific dates?</summary>
+                            <p>Yes! Use the Advanced Filters to set a date range for your search.</p>
+                        </details>
+                        <details>
+                            <summary>Where is my data stored?</summary>
+                            <p>All data is stored locally in a SQLite database. Your conversations never leave your computer unless you explicitly export and share them.</p>
+                        </details>
+                        <details>
+                            <summary>What's the difference between export formats?</summary>
+                            <p>Markdown is human-readable, JSON contains raw data for processing, and ZIP bundles include everything (messages, artifacts, metadata) in a structured archive.</p>
+                        </details>
+                        <details>
+                            <summary>Can I delete conversations?</summary>
+                            <p>Currently, you can only view and export conversations. To remove conversations, you'll need to use the CLI tools or directly modify the database.</p>
+                        </details>
+                    </div>
+
+                    <div class="help-section help-links">
+                        <h3>🔗 Resources</h3>
+                        <p>
+                            <a href="#" onclick="alert('Check the project README.md for repository information'); return false;">GitHub Repository</a> |
+                            <a href="#" onclick="alert('See README.md for full documentation'); return false;">Full Documentation</a> |
+                            <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai</a>
+                        </p>
+                        <p style="margin-top: 16px; font-size: 0.9rem; color: var(--text-muted);">
+                            For more information, consult the README.md file in the project root.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

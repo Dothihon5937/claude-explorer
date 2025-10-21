@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# User data and exports
+conversations.json
+projects.json
+users.json
+*.zip
+*.md.backup
+
+# Authentication
+auth.json
+.claude-explorer/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test output
+screenshots/
+*.png
+
+# User-specific files that shouldn't be in repo
+msp-onboarding-bundle/
+vxrail_*.md
+vxrail_*.txt
+SESSION-SUMMARY.md
+BUNDLE-SUMMARY.md

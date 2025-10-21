@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  claude-explorer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: claude-explorer
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount your Claude.ai backup data - UPDATE THIS PATH!
+      # Windows: Use forward slashes (C:/Users/username/path/to/data)
+      # Linux/Mac: Use absolute paths (/home/username/path/to/data)
+      - /path/to/your/claude-export:/data:ro
+    environment:
+      - PORT=3000
+      - DATA_PATH=/data
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/stats', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.docker.compose.project=claude-explorer"
+      - "description=Claude.ai conversation explorer and search tool"
