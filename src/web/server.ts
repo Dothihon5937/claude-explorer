@@ -501,6 +501,6 @@ export async function startServer(path: string) {
 
 // Start if run directly
 if (process.argv[1] === __filename) {
-  const dataPath = process.argv[2] || process.cwd();
+  const dataPath = process.env.DATA_PATH || process.argv[2] || process.cwd();
   startServer(dataPath);
 }

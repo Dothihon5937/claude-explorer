@@ -52,3 +52,4 @@ vxrail_*.md
 vxrail_*.txt
 SESSION-SUMMARY.md
 BUNDLE-SUMMARY.md
+docker-compose.override.yml
